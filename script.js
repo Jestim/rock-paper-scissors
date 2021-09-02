@@ -1,32 +1,3 @@
-/*
------Pseudocode-----
-
-playGame, best of 5
-  playerNumberOfWins
-  computerNumberOfWins
-  loop 5 times
-    playRound()
-    update who won and add to their score
-  return who won
-
-playRound()
-  playerChoice
-  computerChoice
-  compareValues
-  return winner
-
-playerChoice
-  promptPlayer
-  make it lower case
-  return choice
-
-computerChoice
-  get random integer between 0-2
-  assign rock, paper or scissor to randomnumber and return string
-
-*/
-
-
 // best of 5
 function playGame() {
     let playerNumberOfWins = 0;

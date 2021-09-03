@@ -27,8 +27,7 @@ function playGame() {
     }
 }
 
-function playRound() {
-    let player = playerChoice();
+function playRound(player) {
     let computer = computerChoice();
     let winner = compareChoices(player, computer);
 
@@ -85,3 +84,12 @@ function compareChoices(player, computer) {
         return "computer";
     }
 }
+
+const buttons = document.querySelectorAll('#selection');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        console.log(e.target.id);
+        //playRound(e.target.id)
+    });
+});

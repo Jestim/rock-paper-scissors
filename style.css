@@ -45,6 +45,12 @@ header {
     background-color: aqua;
 }
 
+#computer-selection {
+    border: solid;
+    width: 100%;
+    text-align: center;
+}
+
 #score-header {
     width: 90%;
     display: flex;

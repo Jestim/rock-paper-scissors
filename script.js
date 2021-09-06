@@ -31,13 +31,21 @@ function playRound(player) {
     let computer = computerChoice();
     let winner = compareChoices(player, computer);
 
+    let cChoice = document.querySelector('#computer-choice');
+    cChoice.textContent = computer;
+
+    let roundWinner = "";
+
     if (winner === "player") {
-        console.log(`You win! ${player} beats ${computer}!`);
+        roundWinner = `You win! ${player} beats ${computer}!`;
     } else if (winner === "computer") {
-        console.log(`You lose! ${computer} beats ${player}!`);
+        roundWinner = `You lose! ${computer} beats ${player}!`;
     } else {
-        console.log("It's a tie!");
+        roundWinner = "It's a tie!";
     }
+
+    let roundResult = document.querySelector('#round-result');
+    roundResult.textContent = roundWinner;
 
     return winner;
 }
@@ -89,7 +97,7 @@ const buttons = document.querySelectorAll('#selection');
 
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
-        console.log(e.target.id);
-        //playRound(e.target.id)
+        //console.log(e.target.textContent.toLowerCase());
+        playRound(e.target.textContent.toLowerCase());
     });
 });

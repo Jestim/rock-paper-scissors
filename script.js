@@ -1,29 +1,30 @@
-// best of 5
-function playGame() {
-    let playerNumberOfWins = 0;
-    let computerNumberOfWins = 0;
+let playerNumberOfWins = 0;
+let computerNumberOfWins = 0;
+let gameOver = false;
 
-    // loop 5 times
-    for (let i = 0; i < 5; i++) {
-        let winner = playRound()
+// first to 5 point
+function playGame(player) {
+    let winner = playRound(player)
 
-        // update who won and add to their score
-        if (winner === "player") {
-            playerNumberOfWins++;
-        } else if (winner === "computer") {
-            computerNumberOfWins++;
-        }
+    // update who won and add to their score
+    if (winner === "player") {
+        playerNumberOfWins++;
+        let playerScore = document.querySelector('#player');
+        playerScore.textContent = playerNumberOfWins.toString();
+    } else if (winner === "computer") {
+        computerNumberOfWins++;
+        let computerScore = document.querySelector('#computer');
+        computerScore.textContent = computerNumberOfWins.toString();
     }
 
-    console.log(`Player score: ${playerNumberOfWins}`);
-    console.log(`Computer score: ${computerNumberOfWins}`);
+    let roundResult = document.querySelector('#round-result');
 
-    if (playerNumberOfWins > computerNumberOfWins) {
-        console.log("You won the game!");
-    } else if (computerNumberOfWins > playerNumberOfWins) {
-        console.log("you lost the game!");
-    } else {
-        console.log("It's a tie game!");
+    if (playerNumberOfWins == 5) {
+        roundResult.textContent = "You won the match!";
+        gameOver = true;
+    } else if (computerNumberOfWins == 5) {
+        roundResult.textContent = "You lost the match!";
+        gameOver = true;
     }
 }
 
@@ -97,7 +98,6 @@ const buttons = document.querySelectorAll('#selection');
 
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
-        //console.log(e.target.textContent.toLowerCase());
-        playRound(e.target.textContent.toLowerCase());
+        playGame(e.target.textContent.toLowerCase());
     });
 });
